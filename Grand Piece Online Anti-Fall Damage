@@ -1,13 +1,4 @@
-for i,v in pairs(game:GetService("Workspace").PlayerCharacters:GetChildren()) do
-    myname = game.Players.LocalPlayer.Name
-    if v.Name == myname then do
-        v.ChildAdded:Connect(function(v)
-            if v.Name == "FallDamage" then do
-                v.Disabled = true
-                v:Destroy()
-            end
-        end
-    end)
-end
-end
-end
+local myname = game.Players.LocalPlayer.Name
+game:GetService("RunService").RenderStepped:connect(function()
+game:GetService("Workspace").PlayerCharacters[myname].FallDamage.Disabled = true
+end)
